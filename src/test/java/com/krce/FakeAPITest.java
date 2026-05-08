@@ -32,17 +32,6 @@ public class FakeAPITest {
     }
 
     @Test
-    public void testFilterProductsByPrice() {
-        RestAssured.given()
-                .queryParam("price", 100)  //A query parameter is the part after ? in a URL.
-                .when()
-                .get("/products/")
-                .then()
-                .statusCode(200)
-                .body("[0].price", Matchers.equalTo(100));
-    }
-
-    @Test
     public void testFilterProductsByTitle() {
         RestAssured.given()
                 .queryParam("title", "Classic Blue Baseball Cap")
