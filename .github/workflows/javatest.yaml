@@ -19,3 +19,19 @@ jobs:
 
       - run: mvn test
 
+      - name: Send HTML Report Mail
+        uses: dawidd6/action-send-mail
+        with:
+          server_address: smpt.gmail.com
+          server_port: 465
+          secure: true
+
+          username: ${{ secrets.MAILUSERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+
+          subject: Automation Test Report
+
+          to: jeyashree0605@gmail.com
+          from: Github Actions
+
+          html_body: target/surefire-reports/emailable-report.html
